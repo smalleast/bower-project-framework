@@ -1,29 +1,40 @@
 /**
  *  Welcome to your gulpfile!
- *  The gulp tasks are split into several files in the gulp directory
- *  because putting it all here was too long
+ *  The gulp tasks are splitted in several files in the gulp directory
+ *  because putting all here was really too long
  */
 
 'use strict';
 
 var gulp = require('gulp');
-var wrench = require('wrench');
+var del = require('del');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
+var concat = require('gulp-concat');
+var scripts = [
+  'src/angular/main.js',
+  'src/angular/directive/isloading.js',
+  'src/angular/service/isloading.js'
+];
 
-/**
- *  This will load all js or coffee files in the gulp directory
- *  in order to load all gulp tasks
- */
-wrench.readdirSyncRecursive('./gulp').filter(function(file) {
-  return (/\.(js|coffee)$/i).test(file);
-}).map(function(file) {
-  require('./gulp/' + file);
+
+gulp.task('clean', function () {
+  return del('dist');
 });
 
 
-/**
- *  Default task clean temporaries directories and launch the
- *  main optimization build task
- */
+gulp.task('scripts', function () {
+  return gulp.src(scripts)
+    .pipe(concat('angular-isloading.js'))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(uglify())
+    .pipe(rename({
+      suffix: ".min",
+      extname: ".js"
+    }))
+    .pipe(gulp.dest('dist/js'));
+});
+
 gulp.task('default', ['clean'], function () {
-  gulp.start('build');
+  gulp.start(['scripts']);
 });
