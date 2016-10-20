@@ -1,13 +1,13 @@
 (function () {
   'use strict';
 
-  angular.module('nx.widget')
-    .directive('isloading', ['$http', 'nxIsLoading', function ($http, nxIsLoading) {
+  angular.module('dx.plugIn')
+    .directive('isLoading', ['$http', 'dxLoading', function ($http, dxLoading) {
       return {
         restrict: 'A',
         scope: true,
         link: function (scope, elem) {
-          scope.$watch(nxIsLoading.isLoading, function (inValue) {
+          scope.$watch(dxLoading.isLoading, function (inValue) {
             scope.loading = inValue;
           });
         }

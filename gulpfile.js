@@ -12,9 +12,9 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 var scripts = [
-  'src/angular/main.js',
-  'src/angular/directive/isloading.js',
-  'src/angular/service/isloading.js'
+  'src/bower/main.js',
+  'src/bower/directive/dx-loading.js',
+  'src/bower/service/dx-loading.js'
 ];
 
 
@@ -25,7 +25,7 @@ gulp.task('clean', function () {
 
 gulp.task('scripts', function () {
   return gulp.src(scripts)
-    .pipe(concat('angular-isloading.js'))
+    .pipe(concat('angular-dx-loading.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(uglify())
     .pipe(rename({

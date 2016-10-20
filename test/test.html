@@ -2,7 +2,7 @@
 <html lang="en" ng-app="TestApp">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>dx-loading</title>
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
   <meta content="telephone=no" name="format-detection"/>
   <style type="text/css">
@@ -48,55 +48,35 @@
 </div>
 
 <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
-<script type="text/javascript" src="../bower_components/angular-module-stiffener/dist/angular-module-stiffener.js"></script>
-<script type="text/javascript" src="../dist/js/angular-isloading.js"></script>
-
+<script type="text/javascript" src="../dist/js/angular-dx-loading.js"></script>
 <script type="text/javascript">
-  angular.module('TestApp', ['nx.widget']);
-
-  angular.module('TestApp').
-    controller('MainCtrl', function ($http, $q, $rootScope) {
-      //Solution 1:Use loading element to show the loading indicator
-      $rootScope.loading = false;
-      var s1 = $http.get('http://www.baidu.com');
-      var s2 = $http.get('http://www.sina.com');
-      var s3 = $http.get('http://www.163.com');
-      var s4 = $http.get('http://www.qq.com');
-      var s5 = $http.get('http://www.hao123.com');
-
-      //you need a svn if you're a chinese
-      //var s6 = $http.get('https://www.google.com/');
-
-
-      $q.all([s1, s2, s3, s4, s5]).then(function (responses) {
-        console.log(responses);
-      })
-
-
+  angular.module('TestApp', ['dx.plugIn']).controller('MainCtrl', function ($http, $q, $rootScope, $timeout) {
+    $rootScope.loading = true;
+    var s1 = $http.get('http://www.baidu.com');
+    var s2 = $http.get('http://www.sina.com');
+    var s3 = $http.get('http://www.163.com');
+    var s4 = $http.get('http://www.qq.com');
+    var s5 = $http.get('http://www.hao123.com');
+    $q.all([s1, s2, s3, s4, s5]).then(function (responses) {
+      console.log(responses);
+      $timeout(function () {
+        $rootScope.loading = false
+      }, 2000);
     })
-    .controller('MainCtrl2', function ($http, $q, $rootScope, nxIsLoading) {
-      //Solution 2:Or you can directly watch nxIsLoading.isLoading method:
-      $rootScope.$watch(nxIsLoading.isLoading,function(inValue){
+  })
+    .controller('MainCtrl2', function ($http, $q, $rootScope, dxLoading) {
+      $rootScope.$watch(dxLoading.isLoading, function (inValue) {
         $rootScope.loading = inValue;
       });
-
       var s1 = $http.get('http://www.baidu.com');
       var s2 = $http.get('http://www.sina.com');
       var s3 = $http.get('http://www.163.com');
       var s4 = $http.get('http://www.qq.com');
       var s5 = $http.get('http://www.hao123.com');
-
-      //you need a svn if you're a chinese
-      //var s6 = $http.get('https://www.google.com/');
-
-
       $q.all([s1, s2, s3, s4, s5]).then(function (responses) {
         console.log(responses);
       })
-
     });
-
-
 </script>
 </body>
 </html>
