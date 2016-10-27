@@ -1,20 +1,19 @@
 {
   "name": "angular-isloading",
-  "description": "AngularJS directive that provide `a boolean value` to know $http hasn&#39;t had a response or not.",
+  "description": "AngularJS directive.",
   "main": [
-    "dist/js/angular-isloading.js"
+    "dist/js/angular-dx-loading.js"
   ],
   "authors": [
-    "afei"
+    "smalleast"
   ],
   "license": "MIT",
   "keywords": [
     "loading",
     "angular",
-    "isloading",
     "$http"
   ],
-  "homepage": "https://github.com/afeiship/angular-isloading",
+  "homepage": "https://github.com/smalleast/bower-project-framework",
   "moduleType": [
     "amd"
   ],
@@ -27,7 +26,6 @@
     "src"
   ],
   "dependencies": {
-    "angular": "^1.5.5",
-    "angular-module-stiffener": "afeiship/angular-module-stiffener"
+    "angular": "^1.5.5"
   }
 }

@@ -1,11 +1,11 @@
 {
-  "name": "angular-isloading",
+  "name": "bower-project-framework",
   "version": "0.0.0",
-  "description": "AngularJS directive that provide `a boolean value` to know $http hasn&#39;t had a response or not.",
-  "homepage": "https://github.com/afeiship/angular-isloading",
+  "description": "bower angularjs",
+  "homepage": "https://github.com/smalleast/bower-project-framework",
   "author": {
-    "name": "afei",
-    "email": "1290657123@qq.com"
+    "name": "smalleast",
+    "email": "382026180@qq.com"
   },
   "license": "MIT",
   "devDependencies": {

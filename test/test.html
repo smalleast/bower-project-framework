@@ -38,13 +38,12 @@
   </style>
 </head>
 <body ng-controller="MainCtrl">
-
 <div class="loading-widget"
      isloading
      loading="loading"
      data-visible="{{loading}}"
 >
-  <img src="svg/default.svg" alt="">
+  <img src="../src/assets/images/dc-loading.gif" style="width: 60px; height: 60px;">
 </div>
 
 <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
@@ -65,9 +64,9 @@
     })
   })
     .controller('MainCtrl2', function ($http, $q, $rootScope, dxLoading) {
-      $rootScope.$watch(dxLoading.isLoading, function (inValue) {
-        $rootScope.loading = inValue;
-      });
+      /*$rootScope.$watch(dxLoading.isLoading, function (inValue) {
+       $rootScope.loading = inValue;
+       });*/
       var s1 = $http.get('http://www.baidu.com');
       var s2 = $http.get('http://www.sina.com');
       var s3 = $http.get('http://www.163.com');

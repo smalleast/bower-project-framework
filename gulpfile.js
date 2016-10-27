@@ -25,7 +25,7 @@ gulp.task('clean', function () {
 
 gulp.task('scripts', function () {
   return gulp.src(scripts)
-    .pipe(concat('angular-dx-loading.js'))
+    .pipe(concat('bower-dx-loading.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(uglify())
     .pipe(rename({
